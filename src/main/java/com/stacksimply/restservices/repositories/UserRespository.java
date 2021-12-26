@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.stacksimply.restservices.entities.User;
 //repository
-//changes
+//git change
+
 @Repository
 public interface UserRespository extends JpaRepository<User, Long>{
   User findByUserName(String username);
