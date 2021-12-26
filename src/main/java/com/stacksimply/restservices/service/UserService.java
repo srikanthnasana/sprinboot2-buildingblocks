@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stacksimply.restservices.entities.User;
+import com.stacksimply.restservices.exceptions.UserNotFound;
 import com.stacksimply.restservices.repositories.UserRespository;
 
 @Service
@@ -23,17 +24,28 @@ public class UserService {
 		return userRepository.save(user);
 	}
 
-	public Optional<User> findByUserId(Long userId) {
-		return userRepository.findById(userId);
+	public Optional<User> findByUserId(Long userId) throws UserNotFound {
+		Optional<User> user= userRepository.findById(userId);
+		if(!user.isPresent()) {
+			throw new UserNotFound("User Not Found in User Repository");
+		}
+		return user;
 	}
 
-	public User updateUserById(Long id, User user) {
+	public User updateUserById(Long id, User user) throws UserNotFound {
+		Optional<User> optionalUser= userRepository.findById(id);
+		if(!optionalUser.isPresent()) {
+			throw new UserNotFound("User Not Found in User Repository,Provide correct UserId");
+		}
 		user.setId(id);
 		return userRepository.save(user);
 	}
 
-	public void deleteUserById(Long id) {
-		if (userRepository.findById(id).isPresent())
+	public void deleteUserById(Long id) throws UserNotFound {
+		Optional<User> optionalUser= userRepository.findById(id);
+		if(!optionalUser.isPresent()) {
+			throw new UserNotFound("User Not Found in User Repository,Provide correct UserId");
+		}
 			userRepository.deleteById(id);
 
 	}
