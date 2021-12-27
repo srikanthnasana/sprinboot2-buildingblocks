@@ -54,7 +54,7 @@ public class UserController {
 	}
 
 	@GetMapping("/{id}")
-	public Optional<User> getUserId(@PathVariable("id") @Min(1) Long userId) {
+	public Optional<User> getUserById(@PathVariable("id") @Min(1) Long userId) {
 		try {
 			return userService.findByUserId(userId);
 		} catch (UserNotFound e) {
