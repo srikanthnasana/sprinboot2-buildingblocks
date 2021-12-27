@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stacksimply.restservices.entities.User;
+import com.stacksimply.restservices.exceptions.UserExistsException;
 import com.stacksimply.restservices.exceptions.UserNotFound;
 import com.stacksimply.restservices.repositories.UserRespository;
 
@@ -20,8 +21,10 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
-	public User save(User user) {
-		return userRepository.save(user);
+	public void save(User user) throws UserExistsException {
+		if (!Optional.of(userRepository.findByUserName(user.getUserName())).isPresent())
+			throw new UserExistsException("User Already Exits..");
+		userRepository.save(user);
 	}
 
 	public Optional<User> findByUserId(Long userId) throws UserNotFound {
@@ -51,6 +54,7 @@ public class UserService {
 	}
 
 	public User findByUserName(String userName) {
+		
 		return userRepository.findByUserName(userName);
 		
 	}
