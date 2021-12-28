@@ -32,42 +32,47 @@ public class User {
 	@JsonView(Views.External.class)
 	private Long id;
 
-	@NotEmpty(message="Username is Mandatory Field. Please provide username")
+	@NotEmpty(message = "Username is Mandatory Field. Please provide username")
 	@Column(name = "USER_NAME", length = 50, nullable = false, unique = true)
 	@JsonView(Views.External.class)
 	private String userName;
-	
-	@Size(min = 2,message = "FirstName should have atleast 2 characters")
+
+	@Size(min = 2, message = "FirstName should have atleast 2 characters")
 	@Column(name = "FIRST_NAME", length = 50, nullable = false)
 	@JsonView(Views.External.class)
 	private String firstName;
-	
+
 	@Column(name = "LAST_NAME", length = 50, nullable = false)
 	@JsonView(Views.External.class)
 	private String lastName;
-	
+
 	@Column(name = "EMAIL_ADDRESS", length = 50, nullable = false)
 	@JsonView(Views.External.class)
 	private String email;
-	
+
 	@Column(name = "ROLE", length = 50, nullable = false)
 	@JsonView(Views.Internal.class)
 	private String role;
-	
+
 	@Column(name = "SSN", length = 50, nullable = false, unique = true)
-	//@JsonIgnore--Static filtering @JsonIgnore
+	// @JsonIgnore--Static filtering @JsonIgnore
 	@JsonView(Views.Internal.class)
 	private String ssn;
-	
+
 	@OneToMany(mappedBy = "user")
 	@JsonView(Views.Internal.class)
 	private List<Order> orders;
-	
+
+	@Column(name = "ADDRESS")
+	private String Address;
+
 	public User() {
-		
+
 	}
 
-	public User(Long id, String userName, String firstName, String lastName, String email, String role, String ssn) {
+	public User(Long id, @NotEmpty(message = "Username is Mandatory Field. Please provide username") String userName,
+			@Size(min = 2, message = "FirstName should have atleast 2 characters") String firstName, String lastName,
+			String email, String role, String ssn, List<Order> orders, String address) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -76,6 +81,8 @@ public class User {
 		this.email = email;
 		this.role = role;
 		this.ssn = ssn;
+		this.orders = orders;
+		Address = address;
 	}
 
 	public Long getId() {
@@ -134,7 +141,6 @@ public class User {
 		this.ssn = ssn;
 	}
 
-	
 	public List<Order> getOrders() {
 		return orders;
 	}
@@ -143,11 +149,19 @@ public class User {
 		this.orders = orders;
 	}
 
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		Address = address;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + ", role=" + role + ", ssn=" + ssn + "]";
+				+ ", email=" + email + ", role=" + role + ", ssn=" + ssn + ", orders=" + orders + ", Address=" + Address
+				+ "]";
 	}
 
-	
 }

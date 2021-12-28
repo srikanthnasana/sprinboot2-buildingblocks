@@ -25,7 +25,7 @@ public class MapStructContoller {
 	
 
 	@GetMapping
-	public List<UserMapStructDto> getAllUserDtos(){
+	public List<UserMapStructDto> getAllUserDtos(){	
 		return userMapper.usersToUserMsDtos(userRespository.findAll());
 		
 	}
