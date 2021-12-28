@@ -12,6 +12,7 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 //test
 @SpringBootApplication
+
 @ComponentScan(basePackages= {"com.stacksimply.restservices.mappers","com.stacksimply.restservices"})
 public class SpringbootBuildingblocksApplication {
 
