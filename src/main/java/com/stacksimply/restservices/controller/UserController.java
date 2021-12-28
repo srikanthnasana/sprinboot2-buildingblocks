@@ -41,7 +41,7 @@ public class UserController {
 		return userService.getAllUsers();
 	}
 
-	@PostMapping
+	@PostMapping("/createuser")
 	public ResponseEntity<Void> createUser(@Valid @RequestBody User user, UriComponentsBuilder builder) {
 		try {
 			userService.save(user);
@@ -49,7 +49,7 @@ public class UserController {
 			header.setLocation(builder.path("/users/{id}").buildAndExpand(user.getId()).toUri());
 			return new ResponseEntity<Void>(header, HttpStatus.CREATED);
 		} catch (UserExistsException ex) {
-			throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getMessage());
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND,ex.getMessage());                                                                                                                                                                                                                                                                                                                                                                                                                                     
 		}
 	}
 

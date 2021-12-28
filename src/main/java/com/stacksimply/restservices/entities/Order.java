@@ -17,15 +17,19 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name = "orders")
 public class Order {
 	@SequenceGenerator(name = "incseqorder_gen", allocationSize =1, sequenceName = "order_seq")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "incseqorder_gen")
+	@JsonView(Views.Internal.class)
 	@Column(name = "OREDR_ID", updatable = false)
 	@Id
 	private Long oredrId;
+	
+	@JsonView(Views.Internal.class)
 	@Column(name="order_desc")
 	private String orderdescription;
 	

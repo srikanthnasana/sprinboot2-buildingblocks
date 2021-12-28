@@ -17,10 +17,11 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name = "user_info")
-@JsonFilter(value = "userFilter")
+//@JsonFilter(value = "userFilter")--Used for MappingJacksonValue filtering section
 //@JsonIgnoreProperties({"firstName","lastName"}) --Static filtering @JsonIgnore
 public class User {
 
@@ -28,30 +29,38 @@ public class User {
 	@SequenceGenerator(name = "incseq_gen", allocationSize = 1, sequenceName = "user_seq")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "incseq_gen")
 	@Column(name = "user_Id", updatable = false)
+	@JsonView(Views.External.class)
 	private Long id;
 
 	@NotEmpty(message="Username is Mandatory Field. Please provide username")
 	@Column(name = "USER_NAME", length = 50, nullable = false, unique = true)
+	@JsonView(Views.External.class)
 	private String userName;
 	
 	@Size(min = 2,message = "FirstName should have atleast 2 characters")
 	@Column(name = "FIRST_NAME", length = 50, nullable = false)
+	@JsonView(Views.External.class)
 	private String firstName;
 	
 	@Column(name = "LAST_NAME", length = 50, nullable = false)
+	@JsonView(Views.External.class)
 	private String lastName;
 	
 	@Column(name = "EMAIL_ADDRESS", length = 50, nullable = false)
+	@JsonView(Views.External.class)
 	private String email;
 	
 	@Column(name = "ROLE", length = 50, nullable = false)
+	@JsonView(Views.Internal.class)
 	private String role;
 	
 	@Column(name = "SSN", length = 50, nullable = false, unique = true)
 	//@JsonIgnore--Static filtering @JsonIgnore
+	@JsonView(Views.Internal.class)
 	private String ssn;
 	
 	@OneToMany(mappedBy = "user")
+	@JsonView(Views.Internal.class)
 	private List<Order> orders;
 	
 	public User() {

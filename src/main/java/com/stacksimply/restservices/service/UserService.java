@@ -22,8 +22,7 @@ public class UserService {
 	}
 
 	public void save(User user) throws UserExistsException {
-		if (!Optional.of(userRepository.findByUserName(user.getUserName())).isPresent())
-			throw new UserExistsException("User Already Exits..");
+		
 		userRepository.save(user);
 	}
 
