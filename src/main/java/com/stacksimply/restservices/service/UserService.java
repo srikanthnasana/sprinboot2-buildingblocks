@@ -18,7 +18,7 @@ public class UserService {
 	private UserRespository userRepository;
 
 	public List<User> getAllUsers() {
-		return userRepository.findAll();
+		return userRepository.findAllUsers();
 	}
 
 	public void save(User user) throws UserExistsException {

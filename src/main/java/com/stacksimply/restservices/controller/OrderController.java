@@ -2,10 +2,7 @@ package com.stacksimply.restservices.controller;
 
 import java.util.List;
 import java.util.Optional;
-
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,12 +51,12 @@ public class OrderController {
 	}
 
 	@GetMapping("/{userid}/orders/{orderid}")
-	public Optional<Order> getOrderByOrderId(@PathVariable("userid") @Min(1) Long userId,
+	public Order getOrderByOrderId(@PathVariable("userid") @Min(1) Long userId,
 			@PathVariable("orderid") @Min(1) Long orderId) throws UserNotFound {
 		Optional<User> userOptional = userRespository.findById(userId);
 		if (!userOptional.isPresent())
 			throw new UserNotFound("User Not Found");
-		return Optional.ofNullable(orderRepository.findById(orderId).orElseThrow(()->new UserNotFound("Order Not Exits!..")));
+		return Optional.ofNullable(orderRepository.findById(orderId).orElseThrow(()->new UserNotFound("Order Not Exits!.."))).get();
 	}
 
 }

@@ -1,10 +1,8 @@
 package com.stacksimply.restservices.entities;
 
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,47 +11,53 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
-import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(description = "This Model is to create a user")
 @Entity
 @Table(name = "user_info")
 //@JsonFilter(value = "userFilter")--Used for MappingJacksonValue filtering section
 //@JsonIgnoreProperties({"firstName","lastName"}) --Static filtering @JsonIgnore
 public class User {
-
+    @ApiModelProperty(notes = "Auto generated unique Id",required = true,position = 1,example = "101")
 	@Id
 	@SequenceGenerator(name = "incseq_gen", allocationSize = 1, sequenceName = "user_seq")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "incseq_gen")
 	@Column(name = "user_Id", updatable = false)
 	@JsonView(Views.External.class)
 	private Long id;
-
+    
+    @ApiModelProperty(notes = "username should be in format flname",required = true,position = 2,example = "Srikanth")
+	@Size(min = 2,max = 50)
 	@NotEmpty(message = "Username is Mandatory Field. Please provide username")
 	@Column(name = "USER_NAME", length = 50, nullable = false, unique = true)
 	@JsonView(Views.External.class)
 	private String userName;
 
-	@Size(min = 2, message = "FirstName should have atleast 2 characters")
+    @ApiModelProperty(notes = "firstname should be in format flname",required = false,position = 3,example = "Srikanth")
+	@Size(min = 2,max = 50, message = "FirstName should have atleast 2 characters")
 	@Column(name = "FIRST_NAME", length = 50, nullable = false)
 	@JsonView(Views.External.class)
 	private String firstName;
 
+    @ApiModelProperty(notes = "lastname should be in format flname",required = false,position = 4,example = "Nasana")
 	@Column(name = "LAST_NAME", length = 50, nullable = false)
 	@JsonView(Views.External.class)
 	private String lastName;
 
+    @ApiModelProperty(notes = "email should be in format flname",required = true,position = 5,example = "srikanth.nasana@gmail.com")
 	@Column(name = "EMAIL_ADDRESS", length = 50, nullable = false)
 	@JsonView(Views.External.class)
 	private String email;
 
+    @ApiModelProperty(notes = "role should be in format flname",required = true,position = 6,example = "Admin")
 	@Column(name = "ROLE", length = 50, nullable = false)
 	@JsonView(Views.Internal.class)
 	private String role;
 
+    @ApiModelProperty(notes = "ssn should be in format flname",required = true,position = 7,example = "ssn101")
 	@Column(name = "SSN", length = 50, nullable = false, unique = true)
 	// @JsonIgnore--Static filtering @JsonIgnore
 	@JsonView(Views.Internal.class)
@@ -63,6 +67,7 @@ public class User {
 	@JsonView(Views.Internal.class)
 	private List<Order> orders;
 
+	@ApiModelProperty(notes = "address should be in format flname",required = true,position = 8,example = "New York")
 	@Column(name = "ADDRESS")
 	private String Address;
 

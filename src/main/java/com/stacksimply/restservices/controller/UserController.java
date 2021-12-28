@@ -1,14 +1,12 @@
 package com.stacksimply.restservices.controller;
 
 import java.util.List;
-import java.util.Optional;
-
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,13 +19,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import com.stacksimply.restservices.entities.User;
 import com.stacksimply.restservices.exceptions.UserExistsException;
 import com.stacksimply.restservices.exceptions.UserNameNotFoundException;
 import com.stacksimply.restservices.exceptions.UserNotFound;
 import com.stacksimply.restservices.service.UserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+@Api(tags = "User Management RESTful Services",value = "UserContoller",description = "Contoller For User Management Service")
 @RestController
 @Validated
 @RequestMapping("/users")
@@ -36,13 +37,15 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@GetMapping
+	@ApiOperation(value = "Retrive List Of Users")
+	@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	public List<User> getAllUser() {
 		return userService.getAllUsers();
 	}
 
+	@ApiOperation(value = "Create New User")
 	@PostMapping("/createuser")
-	public ResponseEntity<Void> createUser(@Valid @RequestBody User user, UriComponentsBuilder builder) {
+	public ResponseEntity<Void> createUser(@ApiParam(value = "user information for a new user to be created.") @Valid @RequestBody User user, UriComponentsBuilder builder) {
 		try {
 			userService.save(user);
 			HttpHeaders header = new HttpHeaders();
@@ -54,9 +57,9 @@ public class UserController {
 	}
 
 	@GetMapping("/{id}")
-	public Optional<User> getUserById(@PathVariable("id") @Min(1) Long userId) {
+	public User getUserById(@PathVariable("id") @Min(1) Long userId) {
 		try {
-			return userService.findByUserId(userId);
+			return userService.findByUserId(userId).get();
 		} catch (UserNotFound e) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
 		}
