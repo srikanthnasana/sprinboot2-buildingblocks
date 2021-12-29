@@ -1,10 +1,15 @@
 package com.stacksimply.restservices.exceptions;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,9 +24,19 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 
-		CustomErrorDetails custErrDtls = new CustomErrorDetails(new Date(),
-				"From MethodargumentsNotValid Exception GEH", ex.getMessage());
-		return new ResponseEntity<>(custErrDtls, HttpStatus.BAD_REQUEST);
+		/*
+		 * CustomErrorDetails custErrDtls = new CustomErrorDetails(new Date(),
+		 * "From MethodargumentsNotValid Exception GEH", ex.getMessage());
+		 */
+		ApiError error=new ApiError(400,ex.getMessage(),request.getContextPath());
+		BindingResult bindingResult=ex.getBindingResult();
+		Map<String, String> validationErrors=new HashMap<String, String>();
+		for(FieldError fieldError:bindingResult.getFieldErrors()) {
+			validationErrors.put(fieldError.getField(),fieldError.getDefaultMessage());
+		}
+		error.setValidationErrors(validationErrors);
+		
+		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
 
 	// HttpRequestMethodNotSupported

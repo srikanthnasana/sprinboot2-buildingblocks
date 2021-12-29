@@ -3,7 +3,11 @@ package com.stacksimply.restservices.controller;
 import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,10 +40,15 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	@Value("${context.name:dev}")
+	String contextName;
+	
+	private static final Logger logger=LoggerFactory.getLogger(UserController.class);
 
 	@ApiOperation(value = "Retrive List Of Users")
 	@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	public List<User> getAllUser() {
+		logger.info("Context Running :"+contextName);
 		return userService.getAllUsers();
 	}
 
@@ -47,6 +56,7 @@ public class UserController {
 	@PostMapping("/createuser")
 	public ResponseEntity<Void> createUser(@ApiParam(value = "user information for a new user to be created.") @Valid @RequestBody User user, UriComponentsBuilder builder) {
 		try {
+			logger.info("User :{}"+user);
 			userService.save(user);
 			HttpHeaders header = new HttpHeaders();
 			header.setLocation(builder.path("/users/{id}").buildAndExpand(user.getId()).toUri());
