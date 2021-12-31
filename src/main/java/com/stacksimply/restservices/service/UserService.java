@@ -3,12 +3,20 @@ package com.stacksimply.restservices.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.constraints.Positive;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.stacksimply.restservices.controller.UserController;
 import com.stacksimply.restservices.entities.User;
 import com.stacksimply.restservices.exceptions.UserExistsException;
 import com.stacksimply.restservices.exceptions.UserNotFound;
+import com.stacksimply.restservices.projections.SimpleUserProjectionDTO;
+import com.stacksimply.restservices.projections.SimpleUsers;
+import com.stacksimply.restservices.projections.UserProjectionDTO;
 import com.stacksimply.restservices.repositories.UserRespository;
 
 @Service
@@ -17,6 +25,8 @@ public class UserService {
 	@Autowired
 	private UserRespository userRepository;
 
+	private static final Logger logger=LoggerFactory.getLogger(UserController.class);
+	
 	public List<User> getAllUsers() {
 		return userRepository.findAllUsers();
 	}
@@ -56,5 +66,23 @@ public class UserService {
 		
 		return userRepository.findByUserName(userName);
 		
+	}
+
+	public SimpleUsers findsimpleyById(@Positive Long userId) {
+		logger.info("findByUser Start Calling from Userservice findsimpleyById {}"+userId);
+		return userRepository.findSimpleyById(userId);
+	}
+
+	public <T> T findsimpleyByIdAndUsername(long id, String userName,Class<T> type) {
+		return userRepository.findByIdAndUserName(id, userName,type);
+		
+	}
+
+	public User findDistinctFirstNameAndLastName(String firstName, String lastName) {
+		return userRepository.findDistinctByLastNameAndFirstName(lastName, firstName);
+	}
+
+	public <T> List<T> getSSNDtls(Class<T> type) {
+		return userRepository.getVVNDtls(type);
 	}
 }

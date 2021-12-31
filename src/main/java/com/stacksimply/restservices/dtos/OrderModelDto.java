@@ -1,16 +1,29 @@
 package com.stacksimply.restservices.dtos;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(value = Include.NON_DEFAULT)
 public class OrderModelDto {
 
-	private Long orderId;
+	private Long oredrId;
 	private String orderdescription;
 
-	public Long getOrderId() {
-		return orderId;
+	public OrderModelDto() {
+		
+	}
+	public OrderModelDto(Long oredrId, String orderdescription) {
+		super();
+		this.oredrId = oredrId;
+		this.orderdescription = orderdescription;
 	}
 
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
+	public Long getOredrId() {
+		return oredrId;
+	}
+
+	public void setOredrId(Long oredrId) {
+		this.oredrId = oredrId;
 	}
 
 	public String getOrderdescription() {

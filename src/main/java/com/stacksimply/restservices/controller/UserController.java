@@ -1,8 +1,12 @@
 package com.stacksimply.restservices.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +27,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
+
 import com.stacksimply.restservices.entities.User;
 import com.stacksimply.restservices.exceptions.UserExistsException;
 import com.stacksimply.restservices.exceptions.UserNameNotFoundException;
 import com.stacksimply.restservices.exceptions.UserNotFound;
+import com.stacksimply.restservices.projections.SimpleUserProjectionDTO;
+import com.stacksimply.restservices.projections.SimpleUsers;
+import com.stacksimply.restservices.projections.UserProjectionDTO;
 import com.stacksimply.restservices.service.UserService;
 
 import io.swagger.annotations.Api;
@@ -102,4 +110,47 @@ public class UserController {
 		return user;
 	}
 
+	@GetMapping("/getsimpleuser/{id}")
+	public SimpleUsers findByUser(@Positive @PathVariable("id") Long userId) {
+		
+		 SimpleUsers simpleUser=null;
+		try {
+			 if(userService.findByUserId(userId).isPresent()) {
+				 logger.info("findByUser Start Calling from UserController findsimpleyById {}"+userId);
+				simpleUser=userService.findsimpleyById(userId);
+				 logger.info("findByUser end Calling UserController findsimpleyById {}"+simpleUser);
+			 }
+		} catch (UserNotFound e) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
+		}
+		return simpleUser;
+		
+		
+	}
+	
+	@GetMapping("/getuserdtls/userid/{id}/user/{username}")
+	public SimpleUserProjectionDTO findByIdAndUserName(@PathVariable Map<String,String> pathParams) throws UserNotFound {
+		logger.info("findByIdAndUserName-Method:"+pathParams.get("id"),pathParams.get("username"));
+		SimpleUserProjectionDTO simpleUserProjectionDTO=null;
+		 if(userService.findByUserId(Long.parseLong(pathParams.get("id"))).isPresent()) {
+			simpleUserProjectionDTO= userService.findsimpleyByIdAndUsername(Long.parseLong(pathParams.get("id")),pathParams.get("username"),SimpleUserProjectionDTO.class);
+		 }
+			 
+		 return simpleUserProjectionDTO;
+	}
+	
+	@GetMapping("/getuserdtls/firstname/{firstname}/lastname/{lastname}")
+	public User findDistinctFirstNameAndLastName(@PathVariable("firstname") String firstName,
+			@PathVariable("lastname") String lastName) {
+		logger.info("findDistinctFirstNameAndLastName-Method:"+firstName+"-"+lastName);
+		
+		return userService.findDistinctFirstNameAndLastName(firstName,lastName);
+		
+	}
+	@GetMapping("/ssn")
+	public List<UserProjectionDTO> getSSNDtls() {
+		return userService.getSSNDtls(UserProjectionDTO.class);
+	}
+	
+	
 }

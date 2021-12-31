@@ -1,7 +1,6 @@
 package com.stacksimply.restservices.mappers;
 
 import java.util.List;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -19,7 +18,7 @@ public interface UserMapper {
 	@Mappings({
 	@Mapping(source ="email",target ="emailaddress"),
 	@Mapping(source ="role",target ="userRole")})
-	 UserMapStructDto userToUserMsDto(User user);
+	 UserMapStructDto userMapStructDto(User user);
 
 	// List<User> To List<UserMapStructDto>
 	List<UserMapStructDto> usersToUserMsDtos(List<User> users);
