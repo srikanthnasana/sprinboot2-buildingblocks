@@ -1269,3 +1269,176 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2021-12-29 23:12:01.359  INFO 12128 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
 2021-12-29 23:12:01.696  INFO 12128 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : Started SpringbootBuildingblocksApplication in 70.255 seconds (JVM running for 6798.521)
 2021-12-29 23:12:01.759  INFO 12128 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-31 15:02:40.790  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : Starting SpringbootBuildingblocksApplication using Java 17.0.1 on DESKTOP-GQBLQGR with PID 8780 (D:\SpringBootPractice\springboot-buildingblocks\target\classes started by LENOVO in D:\SpringBootPractice\springboot-buildingblocks)
+2021-12-31 15:02:40.801  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : The following profiles are active: dev
+2021-12-31 15:02:51.109  INFO 8780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-31 15:02:51.112  INFO 8780 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-12-31 15:02:51.488  INFO 8780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-31 15:02:53.517  INFO 8780 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-31 15:02:53.923  INFO 8780 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.23.Final
+2021-12-31 15:02:55.202  INFO 8780 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-31 15:02:56.086  INFO 8780 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-31 15:02:58.015  INFO 8780 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-31 15:02:58.575  INFO 8780 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-31 15:02:58.820  INFO 8780 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2021-12-31 15:04:09.480  INFO 8780 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-31 15:04:09.621  INFO 8780 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-12-31 15:04:09.700  INFO 8780 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-12-31 15:04:09.918  INFO 8780 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-12-31 15:04:12.208  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : Started SpringbootBuildingblocksApplication in 93.528 seconds (JVM running for 96.009)
+2021-12-31 15:05:34.266  INFO 8780 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-31 15:05:34.626 DEBUG 8780 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        user0_.user_id as user_id1_1_,
+        user0_.address as address2_1_,
+        user0_.email_address as email_address3_1_,
+        user0_.first_name as first_name4_1_,
+        user0_.last_name as last_name5_1_,
+        user0_.role as role6_1_,
+        user0_.ssn as ssn7_1_,
+        user0_.user_name as user_name8_1_ 
+    from
+        user_info user0_
+2021-12-31 15:09:14.808  INFO 8780 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-12-31 15:09:14.863  INFO 8780 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-12-31 15:09:15.167  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : Starting SpringbootBuildingblocksApplication using Java 17.0.1 on DESKTOP-GQBLQGR with PID 8780 (D:\SpringBootPractice\springboot-buildingblocks\target\classes started by LENOVO in D:\SpringBootPractice\springboot-buildingblocks)
+2021-12-31 15:09:15.168  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : The following profiles are active: dev
+2021-12-31 15:09:18.213  INFO 8780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-31 15:09:18.218  INFO 8780 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-12-31 15:09:18.385  INFO 8780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-31 15:09:18.732  INFO 8780 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-31 15:09:18.760  INFO 8780 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2021-12-31 15:09:19.053  INFO 8780 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2021-12-31 15:09:19.055  INFO 8780 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2021-12-31 15:09:20.463  INFO 8780 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-31 15:10:27.558  INFO 8780 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-31 15:10:27.575  INFO 8780 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-12-31 15:10:27.577  INFO 8780 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-12-31 15:10:27.611  INFO 8780 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-12-31 15:10:28.127  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : Started SpringbootBuildingblocksApplication in 73.111 seconds (JVM running for 471.928)
+2021-12-31 15:10:28.219  INFO 8780 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2021-12-31 15:10:28.263  INFO 8780 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2021-12-31 15:10:28.506  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : Starting SpringbootBuildingblocksApplication using Java 17.0.1 on DESKTOP-GQBLQGR with PID 8780 (D:\SpringBootPractice\springboot-buildingblocks\target\classes started by LENOVO in D:\SpringBootPractice\springboot-buildingblocks)
+2021-12-31 15:10:28.506  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : The following profiles are active: dev
+2021-12-31 15:10:30.651  INFO 8780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-31 15:10:30.652  INFO 8780 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-12-31 15:10:30.832  INFO 8780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-31 15:10:31.092  INFO 8780 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-31 15:10:31.126  INFO 8780 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2021-12-31 15:10:31.282  INFO 8780 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2021-12-31 15:10:31.284  INFO 8780 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2021-12-31 15:10:32.243  INFO 8780 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-12-31 15:11:34.837  INFO 8780 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-31 15:11:34.858  INFO 8780 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-12-31 15:11:34.860  INFO 8780 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-12-31 15:11:34.910  INFO 8780 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-12-31 15:11:35.383  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : Started SpringbootBuildingblocksApplication in 66.991 seconds (JVM running for 539.183)
+2021-12-31 15:11:55.542  INFO 8780 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-31 15:11:55.566 DEBUG 8780 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        user0_.user_id as user_id1_1_,
+        user0_.address as address2_1_,
+        user0_.email_address as email_address3_1_,
+        user0_.first_name as first_name4_1_,
+        user0_.last_name as last_name5_1_,
+        user0_.role as role6_1_,
+        user0_.ssn as ssn7_1_,
+        user0_.user_name as user_name8_1_ 
+    from
+        user_info user0_
+2021-12-31 15:11:55.602 DEBUG 8780 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        orders0_.user_id as user_id5_0_0_,
+        orders0_.oredr_id as oredr_id1_0_0_,
+        orders0_.oredr_id as oredr_id1_0_1_,
+        orders0_.creationtime as creationtime2_0_1_,
+        orders0_.lastupdate as lastupdate3_0_1_,
+        orders0_.order_desc as order_desc4_0_1_,
+        orders0_.user_id as user_id5_0_1_ 
+    from
+        orders orders0_ 
+    where
+        orders0_.user_id=?
+2021-12-31 15:11:55.614 TRACE 8780 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [101]
+2021-12-31 15:11:55.693 DEBUG 8780 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        orders0_.user_id as user_id5_0_0_,
+        orders0_.oredr_id as oredr_id1_0_0_,
+        orders0_.oredr_id as oredr_id1_0_1_,
+        orders0_.creationtime as creationtime2_0_1_,
+        orders0_.lastupdate as lastupdate3_0_1_,
+        orders0_.order_desc as order_desc4_0_1_,
+        orders0_.user_id as user_id5_0_1_ 
+    from
+        orders orders0_ 
+    where
+        orders0_.user_id=?
+2021-12-31 15:11:55.695 TRACE 8780 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [102]
+2021-12-31 15:11:55.702 DEBUG 8780 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        orders0_.user_id as user_id5_0_0_,
+        orders0_.oredr_id as oredr_id1_0_0_,
+        orders0_.oredr_id as oredr_id1_0_1_,
+        orders0_.creationtime as creationtime2_0_1_,
+        orders0_.lastupdate as lastupdate3_0_1_,
+        orders0_.order_desc as order_desc4_0_1_,
+        orders0_.user_id as user_id5_0_1_ 
+    from
+        orders orders0_ 
+    where
+        orders0_.user_id=?
+2021-12-31 15:11:55.703 TRACE 8780 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [8]
+2021-12-31 15:11:55.712 DEBUG 8780 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        orders0_.user_id as user_id5_0_0_,
+        orders0_.oredr_id as oredr_id1_0_0_,
+        orders0_.oredr_id as oredr_id1_0_1_,
+        orders0_.creationtime as creationtime2_0_1_,
+        orders0_.lastupdate as lastupdate3_0_1_,
+        orders0_.order_desc as order_desc4_0_1_,
+        orders0_.user_id as user_id5_0_1_ 
+    from
+        orders orders0_ 
+    where
+        orders0_.user_id=?
+2021-12-31 15:11:55.714 TRACE 8780 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [1]
+2021-12-31 15:11:55.719 DEBUG 8780 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        orders0_.user_id as user_id5_0_0_,
+        orders0_.oredr_id as oredr_id1_0_0_,
+        orders0_.oredr_id as oredr_id1_0_1_,
+        orders0_.creationtime as creationtime2_0_1_,
+        orders0_.lastupdate as lastupdate3_0_1_,
+        orders0_.order_desc as order_desc4_0_1_,
+        orders0_.user_id as user_id5_0_1_ 
+    from
+        orders orders0_ 
+    where
+        orders0_.user_id=?
+2021-12-31 15:11:55.722 TRACE 8780 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [21]
+2021-12-31 15:11:55.726 DEBUG 8780 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        orders0_.user_id as user_id5_0_0_,
+        orders0_.oredr_id as oredr_id1_0_0_,
+        orders0_.oredr_id as oredr_id1_0_1_,
+        orders0_.creationtime as creationtime2_0_1_,
+        orders0_.lastupdate as lastupdate3_0_1_,
+        orders0_.order_desc as order_desc4_0_1_,
+        orders0_.user_id as user_id5_0_1_ 
+    from
+        orders orders0_ 
+    where
+        orders0_.user_id=?
+2021-12-31 15:11:55.727 TRACE 8780 --- [http-nio-8080-exec-2] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [BIGINT] - [41]
+2021-12-31 15:13:59.954  INFO 8780 --- [Thread-17] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2021-12-31 15:14:00.008  INFO 8780 --- [Thread-17] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2021-12-31 15:14:00.280  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : Starting SpringbootBuildingblocksApplication using Java 17.0.1 on DESKTOP-GQBLQGR with PID 8780 (D:\SpringBootPractice\springboot-buildingblocks\target\classes started by LENOVO in D:\SpringBootPractice\springboot-buildingblocks)
+2021-12-31 15:14:00.282  INFO 8780 --- [restartedMain] .s.r.SpringbootBuildingblocksApplication : The following profiles are active: dev
+2021-12-31 15:14:03.086  INFO 8780 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-31 15:14:03.088  INFO 8780 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-12-31 15:14:03.211  INFO 8780 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-31 15:14:03.794  INFO 8780 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-31 15:14:03.864  INFO 8780 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2021-12-31 15:14:04.318  INFO 8780 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2021-12-31 15:14:04.319  INFO 8780 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2021-12-31 15:14:05.482  INFO 8780 --- [restartedMain] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]

@@ -1,22 +1,34 @@
 package com.stacksimply.restservices.dtos;
 
+import java.util.List;
+
 public class UserMapStructDto {
 
 	private Long id;
 	private String userName;
 	private String emailaddress;
 	private String userRole;
+	private List<OrderModelDto> orders;
+
+	public List<OrderModelDto> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<OrderModelDto> orders) {
+		this.orders = orders;
+	}
 
 	public UserMapStructDto() {
      super();
 	}
 
-	public UserMapStructDto(Long userId, String userName, String emailaddress,String userRole) {
+	public UserMapStructDto(Long userId, String userName, String emailaddress,String userRole,List<OrderModelDto> orders) {
 		super();
 		this.id = userId;
 		this.userName = userName;
 		this.emailaddress = emailaddress;
 		this.userRole=userRole;
+		this.orders=orders;
 	}
 
 	public Long getId() {
