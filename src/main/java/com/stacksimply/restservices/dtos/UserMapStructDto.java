@@ -10,6 +10,18 @@ public class UserMapStructDto {
 	private String userRole;
 	private List<OrderModelDto> orders;
 
+	public List<OrderModelDto> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<OrderModelDto> orders) {
+		this.orders = orders;
+	}
+
+	public UserMapStructDto() {
+		
+	}
+	
 	public UserMapStructDto(Long id, String userName, String emailaddress, String userRole,
 			List<OrderModelDto> orders) {
 
@@ -52,14 +64,6 @@ public class UserMapStructDto {
 
 	public void setUserRole(String userRole) {
 		this.userRole = userRole;
-	}
-
-	public List<OrderModelDto> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<OrderModelDto> orders) {
-		this.orders = orders;
 	}
 
 }
