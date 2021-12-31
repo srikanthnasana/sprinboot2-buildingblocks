@@ -32,7 +32,7 @@ public class MapStructContoller {
 	
 	@GetMapping("/{id}")
 	public UserMapStructDto getUserDtos(@PathVariable Long id){
-		return userMapper.userToUserMsDto(userRespository.findById(id).get());
+		return userMapper.userMapStructDto(userRespository.findById(id).get());
 		
 	}
 }
