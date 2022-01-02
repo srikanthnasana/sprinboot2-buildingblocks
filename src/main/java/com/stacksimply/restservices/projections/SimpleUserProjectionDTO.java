@@ -6,10 +6,9 @@ public class SimpleUserProjectionDTO {
 	private String lastName;
 	private Long id;
 	
-	
 
 	public SimpleUserProjectionDTO(String firstName, String lastName, Long id) {
-		super();
+		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.id = id;

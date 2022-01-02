@@ -2,12 +2,16 @@ package com.stacksimply.restservices.entities;
 
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -16,10 +20,23 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.stacksimply.restservices.projections.SimpleUserProjectionDTO;
 import com.stacksimply.restservices.validators.UniqueEmail;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+
+@NamedNativeQuery(name = "User.findUserDtlsById", 
+query = "select u.first_name as firstName,u.last_name as lastName,u.user_id as id from user_info u where user_id=:id",
+resultSetMapping = "mapping.SimpleUserProjectionDTO")
+
+@SqlResultSetMapping(name = "mapping.SimpleUserProjectionDTO", 
+classes = @ConstructorResult(
+		targetClass = SimpleUserProjectionDTO.class, 
+		columns = {
+		@ColumnResult(name = "firstName",type =String.class), 
+		@ColumnResult(name = "lastName",type =String.class), 
+		@ColumnResult(name = "id",type = Long.class) }))
 
 @ApiModel(description = "This Model is to create a user")
 @Entity
