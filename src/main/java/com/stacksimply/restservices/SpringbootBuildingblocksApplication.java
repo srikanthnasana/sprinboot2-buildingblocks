@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 @EnableJpaRepositories("com.stacksimply.restservices.repositories")
 @EntityScan("com.stacksimply.restservices.entities")
 @ComponentScan(basePackages= {"com.stacksimply.restservices.mappers","com.stacksimply.restservices"})
+@EnableWebSecurity(debug = true)//Don't enable in production
 public class SpringbootBuildingblocksApplication {
 
 	@Bean
