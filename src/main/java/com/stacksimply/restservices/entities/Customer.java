@@ -1,10 +1,16 @@
 package com.stacksimply.restservices.entities;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Customer {
@@ -16,6 +22,9 @@ public class Customer {
 	private String email;
 	private String password;
 	private String role;
+	@JsonIgnore
+	@OneToMany(mappedBy = "customer",fetch = FetchType.EAGER)
+	private Set<Authority> authorities;
 	
 	public Customer() {
 		
@@ -60,5 +69,15 @@ public class Customer {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public Set<Authority> getAuthorities() {
+		return authorities;
+	}
+
+	public void setAuthorities(Set<Authority> authorities) {
+		this.authorities = authorities;
+	}
+	
+	
 
 }
