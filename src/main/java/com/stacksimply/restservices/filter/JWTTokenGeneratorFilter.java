@@ -34,7 +34,7 @@ public class JWTTokenGeneratorFilter extends OncePerRequestFilter {
 			String jwt = Jwts.builder().setIssuer("Eazy Bank").setSubject("JWT Token")
 					.claim("username", authentication.getName())
 					.claim("authorities", populateAuthorities(authentication.getAuthorities())).setIssuedAt(new Date())
-					.setExpiration(new Date((new Date()).getTime() + 30000)).signWith(key).compact();
+					.setExpiration(new Date((new Date()).getTime() + 60000)).signWith(key).compact();
 			response.setHeader(SecurityConstants.JWT_HEADER, jwt);
 		}
 
@@ -43,7 +43,7 @@ public class JWTTokenGeneratorFilter extends OncePerRequestFilter {
 
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest request) {
-		return !request.getServletPath().equals("/user");
+		return !request.getServletPath().equals("/users");//not users it is /login this filter works only login time.
 	}
 
 	private String populateAuthorities(Collection<? extends GrantedAuthority> collection) {

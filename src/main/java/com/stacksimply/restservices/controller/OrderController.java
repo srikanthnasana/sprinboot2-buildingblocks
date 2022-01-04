@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import javax.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostFilter;
+import org.springframework.security.access.prepost.PreFilter;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +41,7 @@ public class OrderController {
 	}
 
 	@PostMapping("/{userid}/orders")
+	//@PreFilter("order.orderdescription=='test1'")
 	public Order createOrder(@PathVariable("userid") @Min(1) Long userId, @RequestBody Order order)
 			throws UserNotFound {
 
@@ -49,8 +52,9 @@ public class OrderController {
 		return orderRepository.save(order);
 
 	}
-
+    
 	@GetMapping("/{userid}/orders/{orderid}")
+	//@PostFilter("#userid==101")
 	public Order getOrderByOrderId(@PathVariable("userid") @Min(1) Long userId,
 			@PathVariable("orderid") @Min(1) Long orderId) throws UserNotFound {
 		Optional<User> userOptional = userRespository.findById(userId);
